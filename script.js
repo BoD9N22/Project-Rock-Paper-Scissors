@@ -26,6 +26,24 @@ function playRound(humanSelection, computerSelection) {
   return `Ты проиграл раунд! ${computerSelection} побеждает ${humanSelection}.`;
 }
 
+function checkingWinner(humanScore, computerScore) {
+  if (humanScore === 5) {
+    alert("Ты победил!!!");
+    resetGame();
+  } else if (computerScore === 5) {
+    alert("Ты проиграл(, компьютер круче тебя!");
+    resetGame();
+  }
+}
+
+function resetGame() {
+  humanScore = 0;
+  computerScore = 0;
+  scoreHuman.textContent = "Человек: 0";
+  scoreComputer.textContent = "Компьютер: 0";
+  text.textContent = "Игра началась! Сделай выбор!";
+}
+
 const scoreHuman = document.getElementById("score-human");
 const scoreComputer = document.getElementById("score-computer");
 const text = document.getElementById("text");
@@ -36,6 +54,7 @@ rock.addEventListener("click", () => {
   scoreHuman.textContent = "Человек: " + humanScore;
   scoreComputer.textContent = "Компьютер: " + computerScore;
   text.textContent = res;
+  checkingWinner(humanScore, computerScore);
 });
 const scissors = document.querySelector("#scissors");
 scissors.addEventListener("click", () => {
@@ -43,6 +62,7 @@ scissors.addEventListener("click", () => {
   scoreHuman.textContent = "Человек: " + humanScore;
   scoreComputer.textContent = "Компьютер: " + computerScore;
   text.textContent = res;
+  checkingWinner(humanScore, computerScore);
 });
 const paper = document.querySelector("#paper");
 paper.addEventListener("click", () => {
@@ -50,4 +70,5 @@ paper.addEventListener("click", () => {
   scoreHuman.textContent = "Человек: " + humanScore;
   scoreComputer.textContent = "Компьютер: " + computerScore;
   text.textContent = res;
+  checkingWinner(humanScore, computerScore);
 });
